@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {Component} from 'react';
+import moment from 'moment';
+import TimerDisplay from '../../TimerDisplay/components/TimerDisplay'
+import TimerButtons from '../../TimerButtons/components/TimerButtons'
 
-const Timer = () => (
-    <div className="container has-text-centered">
-        <h3 className="title is-2">
-            Pomodoro Timer
-        </h3>
-        <h4 className="subtitle is-4">25:00</h4>
-        <div className="buttons is-centered">
-            <a className="button is-success is-outlined">Start</a>
-            <a className="button is-danger is-outlined">Stop</a>
-        </div>
-    </div>
-);
+class Timer extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentTime:moment.duration(25,'minutes')
+        }
+    }
+    render() {
+        return (
+            <div className="container has-text-centered">
+                <h3 className="title is-3">
+                    Pomodoro Timer
+                </h3>
+                <TimerDisplay />
+                <TimerButtons />
+            </div>
+        );
+    }
+}
 
 export default Timer;
